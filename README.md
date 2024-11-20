@@ -120,7 +120,7 @@ In this example, Typescript will figure out that the function should return a nu
 - `any` is a type in the typescript.
 - `any` means typescript has no idea what the type is - can't check for correct property references.
 - Avoid variables with `any` at all costs.
-- example on why typescript assign `any` type on coordinates variable:
+- Example on why typescript assign `any` type on coordinates variable:
 
   ```typescript
   const json = '{"x":18, "y": 20 }';
@@ -197,36 +197,42 @@ const {
 
 ## Interface
 
-- interface defines the types of objects.
+- Interface can be used to define the type of objects.
+- Interface **does not** need to define all the properties of a object.
+- We can use a single interface to be used for very different things.
+- We can create functions that accept arguments that are typed with interfaces.
+- Objects/classes can decide to 'implement' a given interface to ork with a function.
+- Interface make the code more reusable.
 
   ```typescript
-  interface Vehicle {
-    name: string;
-    year: Date;
-    broken: boolean;
+  // define an interface that has summary function
+  interface Reportable {
     summary(): string;
   }
+
+  // define a function and the input of this method is annotated with the defined interface
+  const printSummary = (item: Reportable): void => {
+    console.log(item.summary());
+  };
 
   const oldCivic = {
     name: 'civic',
     year: new Date(1000000000000),
     broken: true,
     summary(): string {
-      return 'Test summary';
+      return 'Summary Report for a car';
     },
   };
 
-  const printVehicle = (vehicle: Vehicle): void => {
-    console.log('name', vehicle.name);
-    console.log('year', vehicle.year);
-    console.log('is broken?', vehicle.broken);
+  const drinkA = {
+    name: 'drink A',
+    weight: 100,
+    weightUnit: 'gram',
+    summary(): string {
+      return 'Very good drink summary';
+    },
   };
 
-  const printVehicle2 = ({ name, year, summary }: Vehicle): void => {
-    console.log('name', name);
-    console.log('year', year);
-    console.log(summary());
-  };
-
-  printVehicle2(oldCivic);
+  printSummary(oldCivic);
+  printSummary(drinkA);
   ```

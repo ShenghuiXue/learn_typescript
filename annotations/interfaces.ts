@@ -1,30 +1,28 @@
-interface Vehicle {
-  name: string;
-  year: Date;
-  broken: boolean;
+interface Reportable {
   summary(): string
 }
 
+const printSummary = (item: Reportable): void => {
+  console.log(item.summary());
+} 
 
 const oldCivic = {
   name: 'civic',
   year: new Date(1000000000000),
   broken: true, 
   summary(): string {
-    return "Test summary";
+    return "Summary Report for a car";
   }
 }; 
 
-const printVehicle = (vehicle: Vehicle) : void => {
-  console.log("name", vehicle.name);
-  console.log("year", vehicle.year);
-  console.log("is broken?", vehicle.broken);
-}
+const drinkA = {
+  name: 'drink A', 
+  weight: 100,
+  weightUnit: "gram",
+  summary() : string {
+    return "Very good drink summary";
+  }
+} 
 
-const printVehicle2 = ({ name, year, summary }: Vehicle) : void => {
-  console.log("name", name);
-  console.log("year", year);
-  console.log(summary());
-}
-
-printVehicle2(oldCivic);
+printSummary(oldCivic);
+printSummary(drinkA);
