@@ -169,3 +169,28 @@ const {
   coords: { lat, lng },
 }: { coords: { lat: number; lng: number } } = profile;
 ```
+
+## Tuples and type alias in Typescript
+
+- Tuple is an array-like structure where each element represents some property of a record.
+
+* Tuple is not commonly used.
+
+- An use case of tuple is the row of csv files.
+- Example of tuple and type alias:
+
+  ```Typescript
+  // Object
+  const drink = {
+    color : "brown",
+    carbonated: true,
+    sugar: 40
+  }
+
+  // This is a type annotation of tuple
+  const drink2: [string, boolean, number] = ['brown', true, 40];
+
+  // type alias
+  type Drink = [string, boolean, number];
+  const drink3: Drink = ['brown', true, 40];
+  ```
