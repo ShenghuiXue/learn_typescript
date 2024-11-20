@@ -28,7 +28,7 @@ Alternatively, we can run the typescript code directly using `ts-node index.ts`.
 
 **Type inference**: Typescript tries to figure out what type of value a variable refers to.
 
-### Type annotations
+## Type annotations
 
 - Annotations in primitive types and simple objects:
 
@@ -68,17 +68,54 @@ Alternatively, we can run the typescript code directly using `ts-node index.ts`.
   const logNumber: (i: number) => void = (i: number) => {
     console.log(i);
   };
+
+  const add = (a: number, b: number): number => {
+    return a + b;
+  };
+
+  const multiply = function (a: number, b: number): number {
+    return a * b;
+  };
+
+  function divide(a: number, b: number): number {
+    return a / b;
+  }
+
+  // if the return type of a function is void, then this function can return as undefined.
+  const logger = (message: string): void => {
+    console.log(message);
+    return undefined;
+  };
+
+  // never type will guarantee not return any thing at all, not even undefined
+  const throwError = (message: string): never => {
+    throw new Error(message);
+  };
+
+  // destructing with Annotations (ES2015 syntax)
+  const logWeather = ({ date, weather }: { date: Date; weather: string }) => {
+    console.log(date);
+    console.log(weather);
+  };
   ```
 
-### Type inference
+## Type inference
 
-```
+```typescript
 const color = 'red';
 ```
 
 `const color` is variable declaration, and `'red'` is the variable initialization. If the declaration and initialization are on the **same line**, then Typescript will figure out the type of `color` for us.
 
-### 'any' Type
+```typescript
+const add = (a: number, b: number) => {
+  return a + b;
+};
+```
+
+In this example, Typescript will figure out that the function should return a number.
+
+## 'any' Type
 
 - `any` is a type in the typescript.
 - `any` means typescript has no idea what the type is - can't check for correct property references.
@@ -96,7 +133,7 @@ const color = 'red';
   let coordinates: { x: number; y: number } = JSON.parse(jason);
   ```
 
-### Delayed initialization
+## Delayed initialization
 
 - Declare a variable on one line and initialize it later.
 
@@ -110,5 +147,25 @@ const color = 'red';
       foundNumber = true;
     }
   }
-
   ```
+
+## Destructuring with Objects
+
+```typescript
+const profile = {
+  name: 'alex',
+  age: 20,
+  coords: {
+    lat: 55,
+    lng: 15,
+  },
+  setAge(age: number): void {
+    this.age = age;
+  },
+};
+
+const { age }: { age: number } = profile;
+const {
+  coords: { lat, lng },
+}: { coords: { lat: number; lng: number } } = profile;
+```
