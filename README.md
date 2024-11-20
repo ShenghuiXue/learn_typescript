@@ -233,6 +233,61 @@ const {
     },
   };
 
+  
+
   printSummary(oldCivic);
   printSummary(drinkA);
   ```
+## Class
+
+- Class is the blue print to create an object with some fields (values) and methods (functions) to represent a thing.
+
+### Classes and inheritance
+
+- `extends` key word is used to create a child class from a parent class. The child class inherit all the fields and methods from the parent class.
+- We can override the methods in child class.
+- We can assign the values of the fields in the `constructor`.
+- `super` refers to the parent constructor.
+
+  ```typescript
+  class Vehicle {
+    private color: string;
+
+    constructor(color: string) {
+      this.color = color;
+    }
+
+    // short cut to the lines above
+    // constructor (private color: string) {}
+
+    public drive() : void {
+      console.log ("vehicle driving ...."); 
+    }
+    protected honk(): void {
+      console.log ("Vehicle honk ...");
+    }
+  }
+
+  class Car extends Vehicle {
+    constructor (public wheels: number, color: string) { 
+    // note: color does not have public modifier, 
+    // because color belongs to the parent class
+      super(color);
+    }
+    protected honk(): void {
+      console.log ("beep ...");
+    } 
+  }
+
+  const car = new Car('red');
+  car.drive();
+  car.honk();
+  ```
+
+### Modifiers in class
+
+- `public`: can be called anywhere, anytime.
+  - If a method/field does not have any modifier, it is considered as `public` method by default.
+- `private`: can only be called by the other methods in this class.
+- `protected` can be called by other methods in this class and by other methods in child classes.
+- Modifiers can be added to the methods and the fields in a class.
