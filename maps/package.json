@@ -1,0 +1,19 @@
+{
+  "name": "maps",
+  "version": "1.0.0",
+  "description": "Start index.html with this command `npx parcel index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "@types/google.maps": "^3.58.1",
+    "maps": "file:"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3"
+  }
+}

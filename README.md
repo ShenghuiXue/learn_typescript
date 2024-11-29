@@ -291,3 +291,20 @@ const {
 - `private`: can only be called by the other methods in this class.
 - `protected` can be called by other methods in this class and by other methods in child classes.
 - Modifiers can be added to the methods and the fields in a class.
+
+## Map project
+
+### Definitely Typed Naming Scheme
+
+Read more information from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped).
+
+- Original library name: `faker`
+- Definitely Typed Naming and type definition file: `@types/faker`
+- install `npm install --save @types/faker`
+
+### Interesting points
+
+- Different between `export` and `export default`.
+- In typescript world, we should avoid using `default export` if we can.
+- `!` in Typescript is non-null assertion operator
+- `?` symbol is used in optional parameter in function, optional chaining, or optional properties in object.
