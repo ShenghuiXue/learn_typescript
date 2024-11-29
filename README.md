@@ -308,3 +308,27 @@ Read more information from [DefinitelyTyped](https://github.com/DefinitelyTyped/
 - In typescript world, we should avoid using `default export` if we can.
 - `!` in Typescript is non-null assertion operator
 - `?` symbol is used in optional parameter in function, optional chaining, or optional properties in object.
+
+## Sort project
+
+### tsc and tsconfig.json
+
+- We can create a `tsconfig.json` file to config how to compile typescript.
+  - `tsc --init` will create the `tsconfig.json` file.
+  - We can defined the input and output directory inside of `tsconfig.json` file.
+    - `"outDir": "./build",`
+    - `"rootDir": "./src",`  
+  - run `tsc` command to compile all the ts files
+  - run `tsc -w` to automatically re-compile the ts file into js file, once new ts file is added into the input directory or the existing ts file is modified.
+  - Install two additional modules to automate the compile and running ts code using `npm install nodemon concurrently`.
+    - `nodemon` automatically rerun the code anytime when the code is changed.
+    - `concurrently` will help us to run **multiple** scripts at the same time.
+    - here is the script setup in the package.json. Once set, `npm start` will run tart:build and start:run at the same time at the same time.
+
+      ```json
+        "scripts": {
+          "start:build": "tsc -w",
+          "start:run": "nodemon build/index.js",
+          "start": "concurrently npm:start:*" 
+        },
+      ```
