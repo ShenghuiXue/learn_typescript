@@ -1,7 +1,8 @@
-import { Sortable } from "./Sorter";
+import { Sorter } from "./Sorter";
 
-export class CharactersCollection implements Sortable {
+export class CharactersCollection extends Sorter {
   constructor (public data: string) {
+    super();
   }
   compare(leftIndex: number, rightIndex: number): boolean {
     return this.data[leftIndex].toLowerCase() > this.data[rightIndex].toLowerCase();

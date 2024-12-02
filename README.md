@@ -292,7 +292,7 @@ const {
 - `protected` can be called by other methods in this class and by other methods in child classes.
 - Modifiers can be added to the methods and the fields in a class.
 
-## Map project
+## Map project (Interface project)
 
 ### Definitely Typed Naming Scheme
 
@@ -309,7 +309,7 @@ Read more information from [DefinitelyTyped](https://github.com/DefinitelyTyped/
 - `!` in Typescript is non-null assertion operator
 - `?` symbol is used in optional parameter in function, optional chaining, or optional properties in object.
 
-## Sort project
+## Sort project (Abstract class project)
 
 ### tsc and tsconfig.json
 
@@ -341,3 +341,41 @@ Read more information from [DefinitelyTyped](https://github.com/DefinitelyTyped/
 ### `get` keyword
 
 - `get` keyword will bind an object property to a function. When this property is looked up now the getter function is called. The return value of the getter function then determines which property is returned.
+
+### Abstract class
+
+- Abstract class cannot be used to create an instance of object directly.
+- Can contain implemented classes.
+- List all the method signatures that will eventually be implemented in the future.
+
+  ```typescript
+  export abstract class Sorter{
+    abstract length : number;
+    // same as // abstract get length(): number;
+    abstract compare (leftInd: number, rightInd: number) : boolean;
+    abstract swap (leftIndex: number, rightIndex: number) : void;
+
+    // bubble sort
+    sort () : void {
+      const length: number  = this.length;
+
+      for (let i = 0; i < length; i++) {
+        for (let j = 0; j < length - i - 1; j ++) {
+          if (this.compare(j, j + 1)) {
+            this.swap(j, j + 1);
+          }
+        }
+      }
+    }
+  }
+  ```
+
+- `Interfaces` vs. `Abstract classes`
+  - Interface:
+    - Sets up a contract between different classes.
+    - Use when very different objects that we want to work together. For example, in the previous section, *User* and *Company* are very different from the *Map* object, we just implements *Mappable* to *User* and *Company*.
+    - Promotes **loose coupling**.
+  - Inheritance/Abstract classes
+    - Sets up a contract between different classes.
+    - Use when we are trying to build up a definition of an object/class. For example, in this section, the *Sorter* class has something to do with data, so the *NumbersCollections* and *CharactersCollections* classes are extended with *Sorter*.
+    - **Strongly couples** classes together.
