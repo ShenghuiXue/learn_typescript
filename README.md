@@ -332,3 +332,12 @@ Read more information from [DefinitelyTyped](https://github.com/DefinitelyTyped/
           "start": "concurrently npm:start:*" 
         },
       ```
+
+### Type guard
+
+- `typeof` is used in the primitive types => number, string, boolean etc.
+- `instanceof` is used in every other types that is created with a constructor function.
+
+### `get` keyword
+
+- `get` keyword will bind an object property to a function. When this property is looked up now the getter function is called. The return value of the getter function then determines which property is returned.
