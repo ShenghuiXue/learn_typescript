@@ -379,3 +379,24 @@ Read more information from [DefinitelyTyped](https://github.com/DefinitelyTyped/
     - Sets up a contract between different classes.
     - Use when we are trying to build up a definition of an object/class. For example, in this section, the *Sorter* class has something to do with data, so the *NumbersCollections* and *CharactersCollections* classes are extended with *Sorter*.
     - **Strongly couples** classes together.
+
+## Stats project
+
+- any time when you use the build-in library in typescript, you need to install `@types/node`.
+
+  ```bash
+  npm install @types/node
+  ```
+
+### Enum
+
+- Enum can be applied the a small set fixed values that are closely related.
+- The primary goal is to signal to other engineers that these are all closely related values.
+
+  ```javascript
+  enum MatchResult {
+    HomeWin  = 'H',
+    AwayWin = 'A',
+    Draw = 'D'
+  }
+  ```
